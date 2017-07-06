@@ -142,14 +142,14 @@ public class HomeController {
     @GetMapping("/recruitSchoolSearch")
     public String getSchoolSearch(Model model, Education education)
     {
-        model.addAttribute(new Education());
+        model.addAttribute("searchobject",new Education());
         return "recruitSchoolSearch";
     }
     @PostMapping("/recruitSchoolSearch")
     public String postSchoolSearch(Education education, Model model){
-        model.addAttribute(new Education());
         String userna = education.getSchool();
         Iterable<Education> schoolList=eduRepository.findAllBySchool(userna);
+
         model.addAttribute("schoolList",schoolList);
 
         return "schoolresult";

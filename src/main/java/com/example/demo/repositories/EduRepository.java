@@ -14,4 +14,6 @@ public interface EduRepository extends CrudRepository<Education, Integer> {
     public List<Education> findTop10ByEmail(String email);
     @Query
     public List<Education> findAllBySchool(String email);
+
+    Education findBySchool(String school);
 }

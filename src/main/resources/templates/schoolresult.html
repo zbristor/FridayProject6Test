@@ -11,14 +11,12 @@
             <th height="50">Username</th>
             <th height="50">Degree</th>
             <th height="50">Graduation Year</th>
-            <div th:each = "education: ${schoolList}" >
-                <tr>
-                    <td> <a th:text =  "${education.email}" >Degree  </a> </td>
-                    <!--<td> <a th:utext =  "${education.school}" >Degree  </a> </td>-->
-                    <td> <a th:text =  "${education.degree}" >Degree  </a> </td>
-                    <td> <a th:text =  "${education.year}" >Degree  </a> </td>
+            <div>
+                <tr th:each = "education: ${schoolList}">
+                    <td th:text =  "${education.email}" >Degree   </td>
+                    <td th:text =  "${education.degree}" >Degree  </td>
+                    <td th:text =  "${education.year}" >Degree   </td>
                 </tr>
-
             </div>
         </table>
     </div>
