@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="www.thymeleaf.org">
+<head th:replace="index::head">
+
+</head>
+<body>
+<nav th:replace="index::navseeker"></nav>
+
+<form th:action = "@{/seekersearch}" th:object = "${user}" method = "post">
+    <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter username" th:field="*{username}"/>
+    <input type="submit" value="Search" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="www.thymeleaf.org">
+<head th:replace="index::head">
+
+</head>
+<body>
+<nav th:replace="index::navseeker"></nav>
+<div>
+    <div class = "container">
+        <table class="table">
+            <th height="50">Username</th>
+            <th height="50">Firstname</th>
+            <th height="50">Lastname</th>
+            <!--<div th:each = "user: ${userList}">-->
+            <div th:object = "${userList}">
+                <tr>
+                    <td> <a th:text =  "${userList.username}" >Degree  </a> </td>
+                    <td> <a th:text =  "${userList.firstName}" >Degree  </a> </td>
+                    <td> <a th:text =  "${userList.lastName}" >Degree  </a> </td>
+                </tr>
+            </div>
+        </table>
+    </div>
+</div>
+</body>
+</html>

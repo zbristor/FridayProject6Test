@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="index::head">
+</head>
+<body>
+<nav th:replace="index::navseeker"></nav>
+<div class = "container">
+    <form th:action = "@{/recruiterjobpost}" th:object = "${job}" method = "post">
+        <div class="form-group">
+            <label for="exampleInputname1">Title</label>
+            <input type="text" class="form-control" id="exampleInputname1" placeholder="Title" th:field="*{title}"/>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputurl2">Salary</label>
+            <input type="text" class="form-control" id="exampleInputurl2" placeholder="Salary" th:field="*{salary}"/>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputurl3">Description</label>
+            <input type="text" class="form-control" id="exampleInputurl3" placeholder="Description" th:field="*{description}"/>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputname4">Skills</label>
+            <input type="text" class="form-control" id="exampleInputname4" placeholder="Skills" th:field="*{skills}"/>
+        </div>
+        <div action="/recruiterjobpost">
+            <input type="submit" value = "Submit" />
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>
