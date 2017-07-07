@@ -21,6 +21,7 @@ import com.example.demo.services.UserValidator;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by student on 6/28/17.
@@ -42,9 +43,8 @@ public class HomeController {
     @Autowired
     private UserService userService;
     @GetMapping ("/")
-    public String mapSeeker()
+    public String mapSeeker(@ModelAttribute Job job, Principal principal, Model model)
     {
-
         return "index";
     }
     @RequestMapping ("/education")
@@ -118,17 +118,8 @@ public class HomeController {
     @PostMapping("/seekersearch")
     public String postSeekersearch(@ModelAttribute User user, Model model, Principal principal){
         String userna = user.getUsername();
-        //Iterable<User> userList=userRepository.findAllByUsername(userna);
         User us = userRepository.findByUsername(userna);
-        //model.addAttribute("userList",userList);
         model.addAttribute("userList",us);
-        /*
-        Iterator<User> test = userList.iterator();
-        while (test.hasNext())
-        {
-            System.out.println(test.next().getFirstName());
-        }
-        */
         return "seekerresult";
     }
     @GetMapping("/recreuitUserSearch")
@@ -141,7 +132,6 @@ public class HomeController {
     public String postUserSearch(User user, Model model){
         String userna = user.getUsername();
         User us = userRepository.findByUsername(userna);
-        //model.addAttribute("userList",userList);
         model.addAttribute("userList",us);
         return "userresult";
     }
@@ -186,19 +176,32 @@ public class HomeController {
         model.addAttribute("skillList", skillList);
         return "skillsearch";
     }
+    @GetMapping("/jobSearchPost")
+    public String getJobSearch(Model model)
+    {
+        model.addAttribute(new Job());
+        return "jobSearchPost";
+    }
+    @PostMapping("/jobSearchPost")
+    public String postJobSearch(@ModelAttribute Job job, Model model) {
+        String userna = job.getTitle();
+        Iterable<Job> jobList = jobRepository.findByTitle(userna);
+        model.addAttribute("jobList", jobList);
+        return "jobPost";
+    }
     @RequestMapping("/recruiterjobpost")
     public String mapJob(Model model)
     {
-        model.addAttribute(new Job());
+        model.addAttribute("job",new Job());
         return "recruiterjobpost";
     }
     @PostMapping("/recruiterjobpost")
-    public String postJob(Job job, Model model, Principal principal)
+    public String postJob(@ModelAttribute Job job, Model model, Principal principal)
     {
         job.setRecruiter(principal.getName());
         jobRepository.save(job);
         model.addAttribute(new Job());
-        return "index";
+        return "recruiterjobpost";
     }
 
     @RequestMapping("/login")
@@ -230,5 +233,12 @@ public class HomeController {
         this.userValidator = userValidator;
     }
 
+    @GetMapping("/jobresults")
+    public String postJobs(Model model, Principal principal, Skills skills, @ModelAttribute Job job)
+    {
+       Iterable<Job> jobList = jobRepository.findAllBySkills(principal.getName());
+       model.addAttribute("jobs",jobList);
+        return "jobresults";
+    }
 
 }
