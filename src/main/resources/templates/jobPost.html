@@ -14,9 +14,9 @@
             <!--<div th:each = "user: ${userList}">-->
             <div>
                 <tr th:each = "job:${jobList}">
-                    <td> <a th:text =  "${job.salary}" >Degree  </a> </td>
-                    <td> <a th:text =  "${job.description}" >Degree  </a> </td>
-                    <td> <a th:text =  "${job.skills}" >Degree  </a> </td>
+                    <td th:text =  "${job.salary}" >Degree</td>
+                    <td th:text =  "${job.description}" >Degree</td>
+                    <td th:text =  "${job.skills}" >Degree</td>
                 </tr>
             </div>
         </table>

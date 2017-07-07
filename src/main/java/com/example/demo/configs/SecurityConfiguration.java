@@ -35,8 +35,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/","/register").permitAll()
                 //.antMatchers("/seekersearch","/recreuitUserSearch","/recruitSchoolSearch","/recruitSkillSearch","/recruitCompanySearch","/recruiterjobsearch","/jobresults").hasAuthority("USER")
                 .antMatchers("/recruiterjobpost","/recruitSkillSearch").hasAuthority("ADMIN")
-                .antMatchers("/recreuitUserSearch","/recruitSchoolSearch","/recruitCompanySearch","/seekersearch","/recruiterjobsearch","/jobresults").authenticated()
-                .anyRequest().authenticated()
+                .antMatchers("/recreuitUserSearch","/recruitSchoolSearch","/recruitCompanySearch","/jobresults").authenticated()
+                .anyRequest().authenticated()//"/seekersearch","/recruiterjobsearch"-->
                 .and()
                 .formLogin().loginPage("/login").permitAll()
                 .and()
