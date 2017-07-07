@@ -44,20 +44,6 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div class="container">
-    <table class="table">
-        <th height="50">Description</th>
-        <th height="50">Salary</th>
-        <th height="50">Company</th>
-        <!--<div th:each = "user: ${userList}">-->
-        <div>
-            <tr th:each="job:${jobs}"> <!--th:each = "job:${jobs}"-->
-                <td th:text =  "${job.description}" >Degree</td>
-                <td th:text =  "${job.salary}" >Degree</td>
-                <td th:text =  "${job.title}" >Degree</td>
-            </tr>
-        </div>
-    </table>
-</div>
+
 </body>
 </html>
