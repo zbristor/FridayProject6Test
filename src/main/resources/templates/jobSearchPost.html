@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="www.thymeleaf.org">
+<head th:replace="index::head">
+
+</head>
+<body>
+<nav th:replace="index::navseeker"></nav>
+<div class = "container">
+    <form th:action = "@{/jobSearchPost}" th:object = "${job}" method = "post">
+        <input type="text" class="form-control" id="exampleInputname1" placeholder="Enter title" th:field="*{title}"/>
+        <input type="submit" value="Search" />
+    </form>
+</div>
+</body>
+</html>
