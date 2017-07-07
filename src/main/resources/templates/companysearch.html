@@ -6,24 +6,22 @@
 <body>
 <nav th:replace="index::navseeker"></nav>
 <div class = "container">
-<form th:action = "@{/recruitCompanySearch}" th:object = "${work}" method = "get">
     <div class = "container">
         <table class="table">
             <th height="50">Username</th>
             <th height="50">Position</th>
             <th height="50">Start Date</th>
             <th height="50">End Date</th>
-            <div th:each = "work: ${companyList}">
-                <tr>
-                    <td> <a th:utext =  "${work.email}" >Username  </a> </td>
-                    <td> <a th:utext =  "${work.position}" >Position  </a> </td>
+            <div >
+                <tr th:each = "work: ${companyList}">
+                    <td th:text =  "${work.email}" >Username</td>
+                    <td th:text =  "${work.position}" >Position</td>
                     <!--<td> <a th:utext =  "${education.school}" >Degree  </a> </td>-->
-                    <td> <a th:utext =  "${work.start}" >Start  </a> </td>
-                    <td> <a th:utext =  "${work.end}" >End  </a> </td>
+                    <td th:text =  "${work.start}" >Start</td>
+                    <td th:text =  "${work.end}" >End</td>
                 </tr>
             </div>
         </table>
-    </div>
 </form>
 </div>
 </body>

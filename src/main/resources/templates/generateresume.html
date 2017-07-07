@@ -7,26 +7,26 @@
 <nav th:replace="index::navseeker"></nav>
 <div class = "container">
     <table class="table">
-        <tr>
-            <td> <a th:utext =  "${fname+' '+lname+'&lt;br/&gt;'+email}"></a></td>
+        <tr th:object="${user}">
+            <td th:utext =  "${user.firstName+' '+user.lastName+'&lt;br/&gt;'+email}"></td>
         </tr>
         <th height="50">Education</th>
-        <div th:each = "education: ${educationList}">
-            <tr>
-                <td> <a th:utext =  "${education.degree+'&lt;br/&gt;'+education.school+', '+education.year}" >Degree  </a> </td>
+        <div >
+            <tr th:each = "education: ${educationList}">
+                <td th:utext =  "${education.degree+'&lt;br/&gt;'+education.school+', '+education.year}" >Degree</td>
             </tr>
         </div>
         <th height="50">Experience</th>
-        <div th:each = "work: ${workList}">
-            <tr>
-                <td> <a th:utext =  "${work.position+'&lt;br/&gt;'+work.company+', '+work.start+'-'+
-                work.end+'&lt;br/&gt;'+work.duties}" >Degree  </a> </td>
+        <div>
+            <tr  th:each = "work: ${workList}">
+                <td th:utext =  "${work.position+'&lt;br/&gt;'+work.company+', '+work.start+'-'+
+                work.end+'&lt;br/&gt;'+work.duties}" >Degree</td>
             </tr>
         </div>
         <th height="50">Skills</th>
-        <div th:each = "skills: ${skillList}">
-            <tr>
-                <td> <a th:utext =  "${skills.skill}" >Skill  </a> </td>
+        <div>
+            <tr th:each = "skills: ${skillList}">
+                <td th:utext =  "${skills.skill}" >Skill</td>
             </tr>
         </div>
     </table>
